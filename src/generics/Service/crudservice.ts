@@ -11,26 +11,26 @@ export class CrudService<Entity extends HasIdInterface> {
     return this.repository.save(addTodo);
   }
   async findOne(id): Promise<Entity> {
-    const todo = await this.repository.findOne({ where: { id } });
-    if (!todo) {
+    const entity = await this.repository.findOne({ where: [{ id:id } ]});
+    if (!entity) {
       throw new NotFoundException('Entité innexistant');
     }
-    return todo;
+    return entity;
   }
-  async update(id: number, updateTodo): Promise<Entity> {
-    const newTodo = await this.repository.preload({
+  async update(id: string, update): Promise<Entity> {
+    const newentity = await this.repository.preload({
       id,
-      ...updateTodo,
+      ...update,
     });
-    if (newTodo) {
-      return this.repository.save(newTodo);
+    if (newentity) {
+      return this.repository.save(newentity);
     }
     throw new NotFoundException('Entité innexistante');
   }
-  remove(id: number): Promise<UpdateResult> {
+  remove(id: string): Promise<UpdateResult> {
     return this.repository.softDelete(id);
   }
-  restore(id: number): Promise<UpdateResult> {
+  restore(id: string): Promise<UpdateResult> {
     return this.repository.restore(id);
   }
 }
