@@ -2,21 +2,20 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from '../app.module';
 import { SkillService } from '../skill/skill.service';
 import { Skill } from '../skill/entities/skill.entity';
-import  { Seeder } from 'typeorm-seeding';
+import { UserService } from '../user/user.service';
+import { User } from '../user/entities/user.entity';
+import { CvService } from '../cv/cv.service';
+import { Cv } from '../cv/entities/cv.entity';
 import {
   randEmail,
   randFirstName,
-  randFullName,
   randJobArea,
   randJobTitle,
   randLastName,
   randNumber,
   randUserName,
 } from '@ngneat/falso';
-import { UserService } from '../user/user.service';
-import { User } from '../user/entities/user.entity';
-import { CvService } from '../cv/cv.service';
-import { Cv } from '../cv/entities/cv.entity';
+
 
 async function bootstrap() {
   const app = await NestFactory.createApplicationContext(AppModule);
@@ -51,8 +50,8 @@ async function bootstrap() {
     cv.user = users[randNumber({ min: 1, max: 10 })];
     cv.skills = [];
     cv.skills.push(skills[1]);
-    cv.skills.push(skills[3]);
-    cv.skills.push(skills[5]);
+    cv.skills.push(skills[2]);
+
 
     await cvService.create(cv);
   }

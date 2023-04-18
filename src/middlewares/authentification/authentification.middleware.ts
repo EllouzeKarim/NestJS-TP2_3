@@ -9,7 +9,7 @@ export class AuthentificationMiddleware implements NestMiddleware {
     if (!authHeader) {
       return res.status(401).json({ message: 'Auth token missing' });
     }
-    try {
+    try { 
       const decodedToken: any = decode(authHeader.toString());
       // console.log(authHeader.toString());
       req['userId'] = decodedToken.userId;

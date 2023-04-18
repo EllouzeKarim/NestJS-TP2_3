@@ -1,11 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Cv } from '../../cv/entities/cv.entity';
-@Entity('skill')
+@Entity()
 export class Skill {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id: number;
   @Column()
   designation: string;
-  @ManyToMany((type) => Cv, (cvs) => cvs.skills)
+
+  @ManyToMany(() => Cv, (cv) => cv.skills)
   cvs: Cv[];
 }

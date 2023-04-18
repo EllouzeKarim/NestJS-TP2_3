@@ -6,8 +6,7 @@ import {
   MinLength,
 } from 'class-validator';
 import { TodoStatusEnum } from '../Enums/todos-status.enum';
-import { notEmpty, maxLength, minLength } from 'src/todo/dto/messages';
-
+import {maxLength, minLength} from "./messages";
 export class UpdateTodoDto {
   @IsOptional()
   @MinLength(3, { message: (validationData) => minLength(validationData) })

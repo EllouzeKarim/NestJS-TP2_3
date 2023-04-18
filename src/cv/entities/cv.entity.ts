@@ -1,4 +1,3 @@
-import { TimestampEntity } from 'src/generics/db/timestamp.entity';
 import {
   Entity,
   Column,
@@ -8,6 +7,7 @@ import {
 } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
 import { Skill } from '../../skill/entities/skill.entity';
+import {TimestampEntity} from "../../generics/db/timestamp.entity";
 @Entity('cv')
 export class Cv extends TimestampEntity {
   @PrimaryGeneratedColumn('uuid')
@@ -24,9 +24,9 @@ export class Cv extends TimestampEntity {
   job: string;
   @Column()
   path: string;
-  @ManyToOne((type) => User, (user) => user.cv)
+  @ManyToOne(() => User, (user) => user.cv)
   user: User;
-  @ManyToMany(() => Skill, (skill) => skill.cvs)
+  @ManyToMany(() => Skill,(skill) => skill.cvs, {})
   @JoinTable({
     name: 'cv_skill',
     joinColumn: {

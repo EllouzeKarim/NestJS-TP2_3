@@ -1,4 +1,4 @@
-import { Entity, Repository, UpdateResult } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { NotFoundException } from '@nestjs/common';
 import { HasIdInterface } from '../interface/has-id.interface';
 
@@ -13,7 +13,7 @@ export class CrudService<Entity extends HasIdInterface> {
   async findOne(id): Promise<Entity> {
     const todo = await this.repository.findOne({ where: { id } });
     if (!todo) {
-      throw new NotFoundException('Todo innexistant');
+      throw new NotFoundException('Entité innexistant');
     }
     return todo;
   }

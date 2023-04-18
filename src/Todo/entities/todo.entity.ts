@@ -1,4 +1,5 @@
-import { TimestampEntity } from 'src/generics/db/timestamp.entity';
+//import { TimestampEntity } from 'C:/Users/ad/tp2nest/src/generics/db/timestamp.entity';
+import {TimestampEntity} from "../../generics/db/timestamp.entity";
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { TodoStatusEnum } from '../Enums/todos-status.enum';
 @Entity('todo')

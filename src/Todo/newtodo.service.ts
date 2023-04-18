@@ -7,7 +7,7 @@ import { UpdateTodoDto } from './dto/update-todo.dto';
 import { TodoEntity } from './entities/todo.entity';
 import { TodoStatusEnum } from './Enums/todos-status.enum';
 import { PaginationDto } from './dto/pagination.dto';
-import { paginate } from 'src/helpers/paginate';
+import {paginate} from "../helpers/paginate";
 
 @Injectable()
 export class NewtodoService {

@@ -1,5 +1,6 @@
 import { IsNotEmpty, MaxLength, MinLength } from 'class-validator';
-import { notEmpty, minLength, maxLength } from 'src/todo/dto/messages';
+import {maxLength, minLength, notEmpty} from "./messages";
+// import { notEmpty, minLength, maxLength } from 'C:/Users/ad/tp2nest/src/todo/dto/messages';
 
 export class AddTodoDto {
   @IsNotEmpty({ message: (validationData) => notEmpty(validationData) })
